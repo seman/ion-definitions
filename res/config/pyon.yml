@@ -70,6 +70,21 @@ server:
     port: 5984
     username:
     password:
+  couchbase:
+    # Couchbase server connection
+    type: couchbase
+    host: localhost
+    port: 8091
+    api_port: 8092
+    internal_cluster_port: 11209
+    client_interface_port: 11211
+    username: default
+    password: default
+    bucket_password:
+    bucket_ram_quota_samll_mb: 128
+    bucket_ram_quota_medium_mb: 512
+    bucket_ram_quota_big_mb: 1024
+    bucket_ram_quota_xbig_mb: 2048
   smtp:
     # Outgoing email server
     type: smtp
