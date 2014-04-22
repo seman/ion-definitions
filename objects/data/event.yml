@@ -454,6 +454,19 @@ SchedulerEvent: !Extends_Event
 ReloadUserInfoEvent: !Extends_Event
   notification_id: ""
 
+# a reload_user_info event generated when a notification is created, updated or deleted
+NotificationCreatedEvent: !Extends_Event
+  notification_id: ""
+  notification_origin: ""
+  notification_origin_type: ""
+  notification_event_type: ""
+  notification_child_resource: False
+  notification_child_resource_type: ""
+  notification_address: ""
+  notification_address_type: ""
+  notification_frequency: ""
+  parent_origin: ""
+  user_id: ""
 
 # ------------------------------------------------------------------------------------
 #                                  ION Events
