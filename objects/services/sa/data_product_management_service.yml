@@ -27,6 +27,7 @@ methods:
       exchange_point: ""
       dataset_id: ""
       parent_data_product_id: ""
+      default_stream_configuration: !StreamConfiguration
     out:
       data_product_id: ""
 
@@ -64,6 +65,7 @@ methods:
       data_product_id: ''
       stream_definition_id: ''
       exchange_point: ''
+      stream_configuration: !StreamConfiguration
     out:
     throws:
       NotFound: object with specified id does not exist
@@ -82,13 +84,33 @@ methods:
     out:
       data_product_list: []
 
+  get_data_product_updates:
+    docstring: |
+      For a list of data products, retrieve events since the given timestamp. The return is a dict
+      of dp_id to a dict containing dataset_id, updated: boolean, current geospatial bounds, current temporal bounds.
+    in:
+      data_product_id_list: []
+      since_timestamp: ""
+    out:
+      data_product_list: {}
+
+  create_dataset_for_data_product:
+    docstring: Creates a dataset resource and coverage model for a data product
+    in:
+      data_product_id: ''
+    out:
+      dataset_id: ''
+    throws:
+      BadRequest: Incorrect or missing associated resources
+
   activate_data_product_persistence:
-    docstring: Persist data product data into a data set
+    docstring: Launches an ingestion worker and persists data.
     in:
       data_product_id: ""
     out:
     throws:
       NotFound: object with specified id does not exist
+      BadRequest: Incorrect or missing associated resources
 
   suspend_data_product_persistence:
     docstring: Suspend data product data persistnce into a data set, multiple options
@@ -267,3 +289,43 @@ methods:
     throws:
       BadRequest: if provenance can not be retrieved
       NotFound: object with specified id does not exist
+
+  create_catalog_entry:
+    docstring: |
+      Creates an entry in the external datasets catalog for a data product.
+    in:
+      data_product_id: ""
+    out:
+    throws:
+      BadRequest: if the data product is malformed or associations are missing
+
+  read_catalog_entry:
+    docstring: |
+      Reads an XML entry from the external datasets catalog for a data product.
+    in:
+      data_product_id: ""
+    out:
+      catalog_entry: XML string for the entry
+    throws:
+      BadRequest: if the data product is malformed.
+
+  update_catalog_entry:
+    docstring: | 
+      Updates a catalog entry for a data product.
+    in:
+      data_product_id: ""
+    out:
+    throws:
+      BadRequest: if the data product is malformed
+      NotFound: if there is no catalog for the system
+
+  delete_catalog_entry:
+    docstring: |
+      Removes a data product entry from the catalog
+    in:
+      data_product_id: ""
+    out: 
+    throws:
+      NotFound: if there is not catalog for the system
+      BadRequest: if the data product is not registered in the catalog
+
