@@ -130,6 +130,10 @@ apps:
     processapp: [user_notification, ion.services.dm.presentation.user_notification_service, UserNotificationService]
     bootlevel: 10
 
+  - name: user_notification2
+    processapp: [user_notification, ion.services.dm.presentation.user_notification_service2, UserNotification2Service]
+    bootlevel: 10
+
   - name: event_management
     processapp: [event_management, ion.services.dm.presentation.event_management_service, EventManagementService]
     bootlevel: 10

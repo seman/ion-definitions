@@ -43,6 +43,30 @@ NotificationRequest: !Extends_InformationResource
   # The start and end time of this subscription
   temporal_bounds: !TemporalBounds
 
+
+# Describes a standing request for notifications by type and delivery modality for one user.
+NotificationRequest2: !Extends_InformationResource
+  # Indicates the notification type as NotificationType value
+  type: !NotificationType
+  # Event filter by origin
+  origin: ""
+  # Event filter by origin type
+  origin_type: ""
+  # Event filter by event type
+  event_type: ""
+  # Event filter by event subtype
+  event_subtype: ""
+  # The start and end time of this subscription
+  temporal_bounds: !TemporalBounds
+  child_resource: False
+  child_resource_type: ""
+  # email or sms address
+  notification_address: ""
+  # is this email or sms address
+  notification_address_type: ""
+  # real-time or batched
+  notification_frequency: ""
+  user_id: ""
 ---
 
 # Notification delivery configuration for a detection event

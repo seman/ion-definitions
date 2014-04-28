@@ -1,0 +1,28 @@
+
+# Enumerates possible notification delivery modes
+ContentDeliveryMode: !enum (values=(DIGEST, UNFILTERED, ABRIDGED), default=DIGEST)
+
+# Enumerates possible notification delivery types
+NotificationDeliveryType: !enum (values=(EMAIL, FILTER), default=EMAIL)
+
+# Enumerates possible notification delivery frequency categories.
+NotificationFrequency: !enum (values=(REAL_TIME, BATCH), default=REAL_TIME)
+
+---
+
+# Describes a standing request for notifications by type and delivery modality for one user.
+SubscribeNotification: !Extends_InformationResource
+  # Indicates the notification type as NotificationType value
+  type: !NotificationType
+  # Event filter by origin
+  origin: ""
+  # Event filter by origin type
+  origin_type: ""
+  # Event filter by event type
+  event_type: ""
+  # Event filter by event subtype
+  event_subtype: ""
+  # The start and end time of this subscription
+  temporal_bounds: !TemporalBounds
+
+
