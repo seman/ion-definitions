@@ -456,6 +456,14 @@ SchedulerEvent: !Extends_Event
 ReloadUserInfoEvent: !Extends_Event
   notification_id: ""
 
+# Create notification
+CreateNotificationEvent: !Extends_Event
+  notification_id: ""
+
+# Delete notification from notification worker
+DeleteNotificationEvent: !Extends_Event
+  notification_id: ""
+
 
 # ------------------------------------------------------------------------------------
 #                                  ION Events
